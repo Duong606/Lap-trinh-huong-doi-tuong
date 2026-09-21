@@ -1,1 +1,25 @@
-
+#include<iostream>
+using namespace std;
+class ps
+{
+	private:
+		int ts,ms;
+	public:
+		void nhap();
+		void xuat();
+};
+void ps::nhap()
+{
+	cout<<"Nhap tu so: "; cin>>ts;
+	cout<<"Nhap mau so: "; cin>>ms;
+}
+void ps::xuat()
+{
+	cout<<ts<<"/"<<ms;
+}
+int main()
+{
+	ps a;
+	a.nhap(); a.xuat();
+	return 0;
+}
