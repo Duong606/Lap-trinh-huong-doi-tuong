@@ -1,21 +1,52 @@
 #include<iostream>
 using namespace std;
+class m1c
+{
+	private:
+		int spt;
+		int a[200];
+	public:
+		void nhapm();
+		void xuatm();
+		void xoa(int k);
+		void chen(int c);
+		void sapxep();
+		int timkiem(int x);
+};
 class ps
 {
 	private:
 		int ts,ms;
 	public:
-		void nhap();
+		void nhap()
+		{
+			cout<<"Nhap tu so: "; cin>>ts;
+			do
+			{
+				cout<<"Nhap mau so: "; cin>>ms;
+			}while(ms==0);
+		}
 		void xuat()
 		{
 			cout<<"Phan so vua nhap: "<<ts<<"/"<<ms<<endl;
 		}
 		ps cong(int m);
+		friend ps tru(int t,ps a);
+		friend ps nhan(int z,ps a);
+		friend ps rutgon(ps a);
 };
-void ps::nhap()
+int ucln(int q,int w)
 {
-	cout<<"Nhap tu so: "; cin>>ts;
-	cout<<"Nhap mau so: "; cin>>ms;
+	if(w==0) return q;
+		return ucln(w,q%w);
+}
+ps rutgon(ps a)
+{
+	ps c;
+	int x=ucln(a.ts,a.ms);
+	c.ts = a.ts / x;
+	c.ms = a.ms / x;
+	return c;
 }
 ps ps::cong(int m)
 {
@@ -24,12 +55,36 @@ ps ps::cong(int m)
 	c.ms=ms;
 	return c;
 }
+ps tru(int t,ps a)
+{
+	ps c;
+	c.ts = t*a.ms - a.ts;
+	c.ms = a.ms;
+	return c;
+}
+ps nhan(int z,ps a)
+{
+	ps c;
+	c.ts= a.ts*z;
+	c.ms= a.ms;
+	return c;
+}
+
 int main()
 {
 	ps a,c;
-	int m=2;
+	int m=2,t,z=2;
 	a.nhap(); a.xuat();
 	c=a.cong(m);
+	rutgon(c);
 	c.xuat();
+	cout<<"Nhap so bi tru= "; cin>>t;
+	c=tru(t,a);
+	rutgon(c);
+	c.xuat();
+	c=nhan(z,a);
+	rutgon(c);
+	c.xuat();
+	
 	return 0;
 }
