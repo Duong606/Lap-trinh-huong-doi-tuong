@@ -15,16 +15,20 @@ class ps
 		}
 		void xuat()
 		{
-			cout<<"Phan so vua nhap: "<<ts<<"/"<<ms<<endl;
+			cout<<"Phan so: "<<ts<<"/"<<ms<<endl;
+			cout<<"----------------------------"<<endl;
 		}
 		ps cong(int m);
-		friend ps tru(int t,ps a); 
-		friend ps nhan(int z,ps a);//ham ban
+		friend ps tru(int t,ps a);
+		friend ps nhan(int z,ps a);
 		friend ps rutgon(ps a);
+		friend ps chia(ps a,ps b);
 };
 int ucln(int q,int w)
 {
-	if(w==0) return q;
+	if(w==0) {
+	return q;	
+	}
 		return ucln(w,q%w);
 }
 ps rutgon(ps a)
@@ -56,21 +60,43 @@ ps nhan(int z,ps a)
 	c.ms= a.ms;
 	return c;
 }
-
+ps chia(ps a,ps b)
+{
+	ps c;
+	c.ts = a.ts * b.ms;
+	c.ms = a.ms * b.ts;
+	return c;
+}
 int main()
 {
-	ps a,c;
-	int m=2,t,z=2;
+	ps a,b,c;
+	int m,t,z;
 	a.nhap(); a.xuat();
+	cout<<"Rut gon: "; a=rutgon(a);
+	a.xuat();
+	
+	cout<<"Nhap so cong: "; cin>>m;
 	c=a.cong(m);
-	rutgon(c);
+	c=rutgon(c);
+	cout<<"Phan so cong xong va rut gon: "<<endl;
 	c.xuat();
-	cout<<"Nhap so bi tru= "; cin>>t;
+	
+	cout<<"Nhap so bi tru: "; cin>>t;
 	c=tru(t,a);
-	rutgon(c);
+	c=rutgon(c);
+	cout<<"Phan so tru xong va rut gon: "<<endl;
 	c.xuat();
+	
+	cout<<"Nhap so nhan: "; cin>>z;
 	c=nhan(z,a);
-	rutgon(c);
+	c=rutgon(c);
+	cout<<"Phan so nhan xong va rut gon: "<<endl;
+	c.xuat();
+	
+	b.nhap();
+	c=chia(a,b);
+	c=rutgon(c);
+	cout<<"Phan so chia xong va rut gon: "<<endl;
 	c.xuat();
 	
 	return 0;
