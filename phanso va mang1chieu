@@ -1,18 +1,5 @@
 #include<iostream>
 using namespace std;
-class m1c
-{
-	private:
-		int spt;
-		int a[200];
-	public:
-		void nhapm();
-		void xuatm();
-		void xoa(int k);
-		void chen(int c);
-		void sapxep();
-		int timkiem(int x);
-};
 class ps
 {
 	private:
@@ -31,8 +18,8 @@ class ps
 			cout<<"Phan so vua nhap: "<<ts<<"/"<<ms<<endl;
 		}
 		ps cong(int m);
-		friend ps tru(int t,ps a);
-		friend ps nhan(int z,ps a);
+		friend ps tru(int t,ps a); 
+		friend ps nhan(int z,ps a);//ham ban
 		friend ps rutgon(ps a);
 };
 int ucln(int q,int w)
