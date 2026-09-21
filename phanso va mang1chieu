@@ -6,20 +6,30 @@ class ps
 		int ts,ms;
 	public:
 		void nhap();
-		void xuat();
+		void xuat()
+		{
+			cout<<"Phan so vua nhap: "<<ts<<"/"<<ms<<endl;
+		}
+		ps cong(int m);
 };
 void ps::nhap()
 {
 	cout<<"Nhap tu so: "; cin>>ts;
 	cout<<"Nhap mau so: "; cin>>ms;
 }
-void ps::xuat()
+ps ps::cong(int m)
 {
-	cout<<ts<<"/"<<ms;
+	ps c;
+	c.ts=m*ms+ts;
+	c.ms=ms;
+	return c;
 }
 int main()
 {
-	ps a;
+	ps a,c;
+	int m=2;
 	a.nhap(); a.xuat();
+	c=a.cong(m);
+	c.xuat();
 	return 0;
 }
